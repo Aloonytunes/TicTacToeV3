@@ -1,4 +1,4 @@
-public class Player {
+public class Piece {
     String state;
     int pos;
 
@@ -17,4 +17,6 @@ public class Player {
     public void setState(String state){
         this.state = state;
     }
+
+
 }
