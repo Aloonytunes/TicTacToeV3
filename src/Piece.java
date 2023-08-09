@@ -1,22 +1,38 @@
 public class Piece {
-    String state;
+
+
+    pieceProperties state;
     int pos;
 
-    public String getState(){
-        return this.state;
-    }
-
-    public int getPos(){
-        return this.pos;
-    }
-
-    public void setPos(int pos){
+    public Piece(pieceProperties state, int pos){
+        this.state = state;
         this.pos = pos;
     }
 
-    public void setState(String state){
+
+    public pieceProperties getState() {
+
+        return this.state;
+    }
+
+    public int getPos() {
+
+        return this.pos;
+    }
+
+    public void setPos(int pos) {
+
+        this.pos = pos;
+    }
+
+    public void setState(pieceProperties state) {
         this.state = state;
     }
 
 
 }
+
+
+
+
+
