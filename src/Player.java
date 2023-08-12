@@ -16,20 +16,26 @@ public class Player {
             System.out.println();
             System.out.println("Pick a number 1-9");
             Scanner scanner = new Scanner(System.in);
-            int p1Input = scanner.nextInt();
-            if (!usedNums.contains(p1Input) && (0 < p1Input) && (p1Input <= 9)) {
-                usedNums.add(p1Input);
-                String inputToBoardPos = Board.posToBoardPos.get(p1Input);
-                String[] splitInputToBoardPos = inputToBoardPos.split(",");
-                int row = Integer.parseInt(splitInputToBoardPos[0]);
-                int col = Integer.parseInt(splitInputToBoardPos[1]);
-                Board.gameBoard[row][col] = 'X';
-                Board.printBoard();
-                p2Turn();
-            } else {
-                System.out.println("Pick an Available Number Number");
+            try {
+                int p1Input = scanner.nextInt();
+                if (!usedNums.contains(p1Input) && (0 < p1Input) && (p1Input <= 9)) {
+                    usedNums.add(p1Input);
+                    String inputToBoardPos = Board.posToBoardPos.get(p1Input);
+                    String[] splitInputToBoardPos = inputToBoardPos.split(",");
+                    int row = Integer.parseInt(splitInputToBoardPos[0]);
+                    int col = Integer.parseInt(splitInputToBoardPos[1]);
+                    Board.gameBoard[row][col] = 'X';
+                    Board.printBoard();
+                    p2Turn();
+                } else {
+                    System.out.println("Pick an Available Number Number");
+                    p1Turn();
+                }
+            } catch (Exception e) {
+                System.out.println("Pick a Number Dumbass");
                 p1Turn();
             }
+
         }
     }
 
@@ -42,18 +48,23 @@ public class Player {
             System.out.println();
             System.out.println("Pick a number 1-9");
             Scanner scanner = new Scanner(System.in);
-            int p2Input = scanner.nextInt();
-            if (!usedNums.contains(p2Input) && (0 < p2Input) && (p2Input <= 9)) {
-                usedNums.add(p2Input);
-                String inputToBoardPos = Board.posToBoardPos.get(p2Input);
-                String[] splitInputToBoardPos = inputToBoardPos.split(",");
-                int row = Integer.parseInt(splitInputToBoardPos[0]);
-                int col = Integer.parseInt(splitInputToBoardPos[1]);
-                Board.gameBoard[row][col] = 'O';
-                Board.printBoard();
-                p1Turn();
-            } else {
-                System.out.println("Pick an Available Number");
+            try {
+                int p2Input = scanner.nextInt();
+                if (!usedNums.contains(p2Input) && (0 < p2Input) && (p2Input <= 9)) {
+                    usedNums.add(p2Input);
+                    String inputToBoardPos = Board.posToBoardPos.get(p2Input);
+                    String[] splitInputToBoardPos = inputToBoardPos.split(",");
+                    int row = Integer.parseInt(splitInputToBoardPos[0]);
+                    int col = Integer.parseInt(splitInputToBoardPos[1]);
+                    Board.gameBoard[row][col] = 'O';
+                    Board.printBoard();
+                    p1Turn();
+                } else {
+                    System.out.println("Pick an Available Number");
+                    p2Turn();
+                }
+            }catch (Exception e){
+                System.out.println("Pick a Number Dumbass");
                 p2Turn();
             }
         }
@@ -76,6 +87,7 @@ public class Player {
                     (Board.gameBoard[row][col + 2] == Board.gameBoard[row][col + 4])) {
                 gameOver = true;
             }
+
         }
         //checks columns for wins
         for (int i = 1; i <= 3; i++) {
@@ -91,7 +103,7 @@ public class Player {
 
         if ((Board.gameBoard[2][2] != ' ')) {
             if ((Board.gameBoard[0][0] == Board.gameBoard[2][2]) && (Board.gameBoard[2][2] == Board.gameBoard[4][4]) ||
-                    (Board.gameBoard[0][4] == Board.gameBoard[2][2]) && (Board.gameBoard[2][2] == Board.gameBoard[4][0])){
+                    (Board.gameBoard[0][4] == Board.gameBoard[2][2]) && (Board.gameBoard[2][2] == Board.gameBoard[4][0])) {
                 gameOver = true;
             }
         }

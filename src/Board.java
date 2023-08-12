@@ -28,7 +28,8 @@ public class Board {
         addToHash(7, 4, 0);
         addToHash(8, 4, 2);
         addToHash(9, 4, 4);
-    }
+
+        }
     public void addToHash(int pos, int row, int col) {
         String boardPos = row + "," + col;
         posToBoardPos.put(pos, boardPos);
